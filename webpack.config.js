@@ -22,6 +22,12 @@ module.exports = {
     },
     resolve: {
         root: __dirname,
+        // directories in which to lookup components
+        modulesDirectories: [
+            'node_modules',
+            './app/components',
+            './app/api'
+        ],        
         alias: {
             appStyles: 'app/styles/app.scss'
         },
