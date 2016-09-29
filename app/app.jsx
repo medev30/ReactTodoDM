@@ -9,7 +9,7 @@ var Main = require('Main');
 // require('style!css!foundation-sites/dist/foundation.min.css') // replaced by sassLoader in webpack.config.js
 
 // start Foundation
-$(document).foundation();
+// $(document).foundation();
 
 // Load css
 require('style!css!sass!appStyles');

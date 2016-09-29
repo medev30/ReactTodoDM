@@ -1,5 +1,7 @@
 var React = require('react');
+var uuid = require('node-uuid');
 
+var TodoSearch = require('TodoSearch');
 var TodoList = require('TodoList');
 var TodoAdd = require('TodoAdd');
 
@@ -23,11 +25,25 @@ var Main = React.createClass({
             ]
         };
     },
+
+    onTodoAdd: function(newTodo) {
+        this.setState({
+            todos: [
+                ...this.state.todos,
+                {
+                    // id: uuid(),
+                    text: newTodo
+                }
+            ]
+        });
+    },
+
     render: function() {
         return (
             <div>
+                <TodoSearch />
                 <TodoList todos={this.state.todos}/>
-                <TodoAdd />
+                <TodoAdd onTodoAdd={this.onTodoAdd}/>
             </div>
         );
     }
