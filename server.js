@@ -1,7 +1,7 @@
 var express = require('express');
 
 var app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 //OpenWeatherMap middleware to redirect all traffic to http: not https:
 
@@ -18,5 +18,5 @@ app.use(function(req, res, next) {
 app.use(express.static('public'));
 
 app.listen(PORT, function() {
-    console.log('ReactTodo - Dima. Express server is running on 3000.');
+    console.log('ReactTodo - Dima. Express server is running on ', PORT);
 });
