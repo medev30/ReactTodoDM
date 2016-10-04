@@ -10,26 +10,15 @@ var Main = React.createClass({
     getInitialState: function() {
         return {
             searchText: '',
-            showAll: false,
-            todos: [
-                {
-                    id: 1,
-                    text: 'Todo 1',
-                    completed: false
-                },
-                {
-                    id: 2,
-                    text: 'Todo 2',
-                    completed: false
-                },
-                {
-                    id: 3,
-                    text: 'Todo 3',
-                    completed: true
-                }
-            ]
+            showAll: true,
+            todos: TodoAPI.getTodos()
         };
     },
+
+    componentDidUpdate: function () {
+        TodoAPI.setTodos(this.state.todos);
+    },
+
     onSearch: function (searchText, showAll) {
         this.setState({
             showAll,

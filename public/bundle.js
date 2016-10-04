@@ -27161,22 +27161,15 @@
 	    getInitialState: function getInitialState() {
 	        return {
 	            searchText: '',
-	            showAll: false,
-	            todos: [{
-	                id: 1,
-	                text: 'Todo 1',
-	                completed: false
-	            }, {
-	                id: 2,
-	                text: 'Todo 2',
-	                completed: false
-	            }, {
-	                id: 3,
-	                text: 'Todo 3',
-	                completed: true
-	            }]
+	            showAll: true,
+	            todos: TodoAPI.getTodos()
 	        };
 	    },
+
+	    componentDidUpdate: function componentDidUpdate() {
+	        TodoAPI.setTodos(this.state.todos);
+	    },
+
 	    onSearch: function onSearch(searchText, showAll) {
 	        this.setState({
 	            showAll: showAll,
@@ -31785,15 +31778,54 @@
 
 /***/ },
 /* 269 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	/* WEBPACK VAR INJECTION */(function($) {'use strict';
 
 	module.exports = {
 
-	    setTodos: function setTodos() {},
+	    setTodos: function setTodos(todos) {
+	        if ($.isArray(todos)) {
+	            // save our todos array in the browser storage under the name 'todos'. Array is converted to string.
+	            localStorage.todos = JSON.stringify(todos);
+	            // localStorage.setItem('todos', JSON.stringify(todos));
+	            return todos; // if todos is invalid - 'undefined' is returned
+	        }
+	    },
 
-	    getTodos: function getTodos() {},
+	    getTodos: function getTodos() {
+	        // get all items saved in the browser under the name 'todos'
+	        var stringTodos = localStorage.todos;
+	        // var stringTodos = localStorage.getItem('todos');
+	        var todos = [];
+
+	        try {
+	            // convert string to array. If it fails then catch will run
+	            todos = JSON.parse(stringTodos);
+	        } catch (e) {}
+	        // runs if error -> nothing to run here
+
+	        // check if array
+	        return $.isArray(todos) ? todos : [];
+	    },
+
+	    getTodos_test: function getTodos_test() {
+	        var todos = [{
+	            id: 1,
+	            text: 'Todo 1',
+	            completed: false
+	        }, {
+	            id: 2,
+	            text: 'Todo 2',
+	            completed: false
+	        }, {
+	            id: 3,
+	            text: 'Todo 3',
+	            completed: true
+	        }];
+
+	        return todos;
+	    },
 
 	    filterTodos: function filterTodos(todos, showAll, searchText) {
 	        var filteredTodos;
@@ -31809,7 +31841,6 @@
 	        filteredTodos = filteredTodos.filter(function (todo) {
 	            var text = todo.text.toLowerCase();
 
-	            console.log(text);
 	            return searchText.length === 0 || text.indexOf(searchText) > -1;
 	        });
 
@@ -31817,6 +31848,7 @@
 	    }
 
 	};
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(274)))
 
 /***/ },
 /* 270 */
