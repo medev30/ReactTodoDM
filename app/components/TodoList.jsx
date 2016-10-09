@@ -7,41 +7,19 @@ var TodoList = React.createClass({
     render: function() {
         var {todos} = this.props;
 
+        console.log(todos);
+        console.log(...todos);
 
-        var renderTodos = () => {
-            if (todos.length === 0) {
-                return <p>Nothing to do</p>;
-            }
+        var displayTodos = todos.map( (todo, index) => {
+            return <Todo key={index} {...todo}/>;
+        });
 
-            return todos.map((todo, index) => {
-                return (
-                    <Todo key={index} {...todo} onToggle={this.props.onToggle}/>
-                );
-            });
-        };
         return (
             <div>
-                {renderTodos()}
+                {displayTodos}
             </div>
         );
     }
 });
 
 module.exports = TodoList;
-
-//
-// var renderTodos = () => {
-//     if (todos.length === 0) {
-//         return (
-//             <p className='container__message'>Nothing To Do</p>
-//         );
-//     }
-//     return todos.map( (todo, index) => {
-//         return <Todo key={index} {...todo} onToggle={this.props.onToggle}/>
-//     });
-// };
-
-// Alternative
-// var renderTodos = todos.map( (todo, index) => {
-//     return <Todo key={index} index={index} {...todo} onToggle={this.props.onToggle}/>
-// });
