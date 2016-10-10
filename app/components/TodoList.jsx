@@ -5,21 +5,25 @@ var Todo = require('Todo');
 var TodoList = React.createClass({
 
     render: function() {
-        var {todos} = this.props;
+        var {todos, onToggle} = this.props;
 
-        console.log(todos);
-        console.log(...todos);
+        var displayTodo = () => {
+            if (todos.length === 0) {
+                    return <div>You've done it all!</div>;
+            }
 
-        var displayTodos = todos.map( (todo, index) => {
-            return <Todo key={index} {...todo}/>;
-        });
+            return todos.map((todo, index) => {
+                return <Todo key={index} {...todo} onToggle={onToggle}/>;
+            });
+        };
 
         return (
             <div>
-                {displayTodos}
+                {displayTodo()}
             </div>
         );
     }
+
 });
 
 module.exports = TodoList;
