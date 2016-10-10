@@ -1,6 +1,5 @@
 var React = require('react');
 var uuid = require('node-uuid');
-var moment = require("moment");
 
 var TodoSearch = require('TodoSearch');
 var TodoList = require('TodoList');
@@ -46,8 +45,7 @@ var Main = React.createClass({
                 {
                     id: uuid(),
                     text: newTodo,
-                    completed: false,
-                    createdAt: moment()
+                    completed: false
                 }
             ]
         });

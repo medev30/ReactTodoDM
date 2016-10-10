@@ -1,7 +1,6 @@
 
 module.exports = {
-
-    getTodos: () => {
+    getTodos: function() {
         var todos = [
             {
                 id: 1,
