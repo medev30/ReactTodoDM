@@ -24,16 +24,16 @@ var Main = React.createClass({
     },
 
     onTodoAdd: function(text) {
-        console.log(this.state.todos);
-        var updatedTodos = [
-            ...this.state.todos,
-            {
-                id: uuid(),
-                text: text,
-                completed: false
-            }
-        ]
-        this.setState({todos: updatedTodos});
+        this.setState({
+            todos: [
+                ...this.state.todos,
+                {
+                    id: uuid(),
+                    text: text,
+                    completed: false
+                }
+            ]
+        });
     },
 
     render: function() {
