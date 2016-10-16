@@ -75,7 +75,7 @@ var Main = React.createClass({
             <div>
                 <h3 className='page-title'>Todo DM3 </h3>
                 <div className='row'>
-                    <div className='column small-centred'>
+                    <div className='column small-centered small-11 medium-6 large-5'>
                         <div className='container'>
                             <TodoSearch onSearch={this.onSearch}/>
                             <TodoList todos={filteredTodos} onToggle={this.onToggle}/>
