@@ -6,7 +6,8 @@ var {Route, Router, IndexRoute, hashHistory, browserHistory} = require('react-ro
 var Main = require('Main');
 
 // Load Foundation
-// require('style!css!foundation-sites/dist/foundation.min.css') // replaced by sassLoader in webpack.config.js
+// replaced by sassLoader in webpack.config.js
+// require('style!css!foundation-sites/dist/foundation.min.css')
 
 // start Foundation
 $(document).foundation();

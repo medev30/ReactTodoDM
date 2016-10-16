@@ -14,12 +14,14 @@ var TodoSearch = React.createClass({
     render: function() {
 
         return (
-            <div>
+            <div className='container__header'>
                 <div>
                     <input type='search' placeholder='Search Todos' ref='search' onChange={this.onChange}/>
                 </div>
                 <div>
-                    <input type='checkbox' ref='showAll' onChange={this.onChange}/> Show All
+                    <label>
+                        <input type='checkbox' ref='showAll' onChange={this.onChange}/> Show All
+                    </label>
                 </div>
             </div>
         );

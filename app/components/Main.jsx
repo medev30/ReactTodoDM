@@ -73,10 +73,16 @@ var Main = React.createClass({
         var filteredTodos = this.filterTodos();
         return (
             <div>
-                <h3>Todo DM3 </h3>
-                <TodoSearch onSearch={this.onSearch}/>
-                <TodoList todos={filteredTodos} onToggle={this.onToggle}/>
-                <TodoAdd onTodoAdd={this.onTodoAdd}/>
+                <h3 className='page-title'>Todo DM3 </h3>
+                <div className='row'>
+                    <div className='column small-centred'>
+                        <div className='container'>
+                            <TodoSearch onSearch={this.onSearch}/>
+                            <TodoList todos={filteredTodos} onToggle={this.onToggle}/>
+                            <TodoAdd onTodoAdd={this.onTodoAdd}/>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         );

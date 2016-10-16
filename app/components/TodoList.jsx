@@ -9,7 +9,7 @@ var TodoList = React.createClass({
 
         var displayTodo = () => {
             if (todos.length === 0) {
-                    return <div>You've done it all!</div>;
+                return <div className='container__message'>You've done it all!</div>;
             }
 
             return todos.map((todo, index) => {
