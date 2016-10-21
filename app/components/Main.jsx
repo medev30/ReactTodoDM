@@ -2,6 +2,7 @@
 
 var React = require('react');
 var uuid = require('node-uuid');
+var moment = require('moment');
 
 var TodoAPI = require('TodoAPI');
 var TodoSearch = require('TodoSearch');
@@ -15,6 +16,9 @@ var Main = React.createClass({
             todos: TodoAPI.getTodos()
         };
     },
+    componentDidUpdate: function () {
+        TodoAPI.setTodos(this.state.todos)
+    },
 
     onSearch: function(searchText, showAll) {
         this.setState({
@@ -27,6 +31,7 @@ var Main = React.createClass({
         var updatedTodos = this.state.todos.map((todo) => {
             if (todo.id === id) {
                 todo.completed = !todo.completed;
+                todo.completedAt = todo.completed ? moment().unix() : null;
             }
             return todo;
         });
@@ -41,7 +46,9 @@ var Main = React.createClass({
                 {
                     id: uuid(),
                     text: text,
-                    completed: false
+                    completed: false,
+                    createdAt: moment().unix(),
+                    completedAt: null
                 }
             ]
         });
